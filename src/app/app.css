@@ -22,3 +22,12 @@
   background-color: #2ecc71;
   color: white;
 }
+
+.servings-counter {
+    display: inline;
+}
+
+.servings-btn {
+    margin: 0 5px;
+    padding: 5px 15px;
+}
