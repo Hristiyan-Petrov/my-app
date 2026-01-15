@@ -1,35 +1,5 @@
 <main class="main">
-    <h1 class="main-heading">{{pageTitle()}}</h1>
-    <section class="active-recipe">
-        <h2>{{currentRecipe().name}}</h2>
-        <p>{{currentRecipe().description}}</p>
-
-        <section class="buttons-wrapper">
-            <button class="btn" (click)="swapRecipe()">View Recipe</button>
-            <button class="btn" (click)="swapRecipe()">Add to favorites</button>
-        </section>
-
-        <section class="servings-wrapper">
-            <p class="servings-counter">Servings: {{servingsCount()}}</p>
-            <button class="servings-btn" (click)="incrementServingsCount()">+</button>
-            <button class="servings-btn" (click)="decrementServingCount()">-</button>
-        </section>
-
-        <section>
-            <h3>Ingredients:</h3>
-            <ul>
-                @for (ingredient of computedIngredients(); track ingredient.name) {
-                <li>
-                    {{ingredient.quantity * servingsCount()}} {{ingredient.unit}} {{ingredient.name}}
-                </li>
-                }
-            </ul>
-
-            <!-- <pre>
-                {{computedIngredients() | json}}
-            </pre> -->
-        </section>
-    </section>
+    <app-recipe-list></app-recipe-list>
 </main>
 
 <router-outlet />

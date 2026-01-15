@@ -1,0 +1,12 @@
+<h1 class="main-heading">{{pageTitle()}}</h1>
+<section class="active-recipe">
+
+    <app-recipe-detail [currentRecipeChild]="currentRecipe()"></app-recipe-detail>
+
+    <section class="buttons-wrapper">
+        <button class="btn" (click)="swapRecipe()">View Recipe</button>
+        <button class="btn" (click)="swapRecipe()">Add to favorites</button>
+    </section>
+
+
+</section>

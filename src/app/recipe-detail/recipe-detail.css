@@ -1,0 +1,51 @@
+.recipe-detail-wrapper {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.recipe-description-wrapper {
+    position: relative;
+}
+
+.isFavorite {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+}
+
+.recipe-heading {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.servings-counter {
+  font-size: 1.5rem;
+}
+
+.servings-buttons-wrapper {
+  display: inline-flex;
+  width: 10%;
+  justify-content: space-evenly;
+}
+
+.servings-btn {
+  background-color: cyan;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.servings-btn:hover {
+  background-color: #49a3c9;
+}
+
+.recipe-ingredients-wrapper {
+  max-width: 50%;
+}
+
+.recipe-ingredients-wrapper h3 {
+  font-size: 1.5rem;
+}
