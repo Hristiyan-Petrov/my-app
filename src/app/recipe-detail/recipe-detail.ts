@@ -1,21 +1,29 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { RecipeModel } from '../models';
+import { ActivatedRoute } from '@angular/router';
+import { JsonPipe } from '@angular/common';
+import { Recipe } from '../services/recipe';
 
 @Component({
   selector: 'app-recipe-detail',
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css',
 })
 export class RecipeDetail {
-  readonly currentRecipeChild = input.required<RecipeModel>();
 
-  // Computed signal
-  protected readonly computedIngredients = computed(() =>
-    this.currentRecipeChild().ingredients.map(x => ({
-      ...x,
-      quantity: x.quantity * this.servingsCount(),
-    })));
+  protected route = inject(ActivatedRoute);
+  readonly recipeId = input.required<string>();
+
+  private readonly recipeService = inject(Recipe);
+
+  protected recipe = computed(() => {
+    return this.recipeService
+      .recipes()
+      .find(x => x.id === Number(this.recipeId()))
+  });
+
+  // readonly currentRecipeChild = input.required<RecipeModel>();
 
   // Servings count
   protected readonly servingsCount = signal<number>(1);
@@ -27,4 +35,11 @@ export class RecipeDetail {
   protected decrementServingCount(): void {
     this.servingsCount.update(prev => prev > 1 ? prev - 1 : prev);
   };
+
+  // Computed signal
+  protected readonly computedIngredients = computed(() =>
+    this.recipe()?.ingredients.map(x => ({
+      ...x,
+      quantity: x.quantity * this.servingsCount(),
+    })));
 }

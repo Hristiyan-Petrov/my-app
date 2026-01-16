@@ -1,12 +1,37 @@
-<h1 class="main-heading">{{pageTitle()}}</h1>
+<!-- <h1 class="main-heading">{{pageTitle()}}</h1>
 <section class="active-recipe">
 
-    <app-recipe-detail [currentRecipeChild]="currentRecipe()"></app-recipe-detail>
+    <input [(ngModel)]="searchTerm" placeholder="Search for Recipe" class="search-bar" name="serchTerm" />
 
-    <section class="buttons-wrapper">
-        <button class="btn" (click)="swapRecipe()">View Recipe</button>
-        <button class="btn" (click)="swapRecipe()">Add to favorites</button>
-    </section>
+    <ul>
+        @for (recipe of filteredRecipes(); track recipe.id) {
+        <li [routerLink]="['/recipes', recipe.id]">
+            {{recipe.name}}
+        </li>
+        } @empty {
+        <li class="empty-state">No recipes found :(</li>
+        }
+    </ul>
+</section> -->
 
-
+<section class="active-recipe">
+    <div class="search-container">
+        <input [(ngModel)]="searchTerm" class="search-bar" placeholder="Search..." />
+    </div>
+    <ul class="recipe-list">
+        @for (recipe of filteredRecipes(); track recipe.id) {
+        <li [routerLink]="['/recipes', recipe.id]">
+            {{recipe.name}}
+        </li>
+        } @empty {
+        <li class="empty-state">No recipes found :(</li>
+        }
+    </ul>
 </section>
+
+<!-- <app-recipe-detail [currentRecipeChild]="currentRecipe()"></app-recipe-detail> -->
+
+<!-- <section class="buttons-wrapper">
+    <button class="btn" (click)="swapRecipe()">View Recipe</button>
+    <button class="btn" (click)="swapRecipe()">Add to favorites</button>
+</section> -->

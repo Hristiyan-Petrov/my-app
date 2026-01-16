@@ -1,17 +1,14 @@
 <section class="recipe-detail-wrapper">
-    <section class="recipe-main-details-wrapper">
-        <section class="recipe-description-wrapper">
-            <section class="recipe-heading-wrapper">
-                <h2 class="recipe-heading">{{currentRecipeChild().name}}</h2>
-                    @if (currentRecipeChild().isFavorite) {
-                        <span class="isFavorite">★</span>
-                    } @else {
-                        <span class="isFavorite">☆</span>
-                    }
-            </section>
-            <p class="recipe-description">{{currentRecipeChild().description}}</p>
+    <section class="recipe-description-wrapper">
+        <section class="recipe-heading-wrapper">
+            <h2 class="recipe-heading">{{recipe()?.name}}</h2>
+            @if (recipe()?.isFavorite) {
+            <span class="isFavorite">★</span>
+            } @else {
+            <span class="isFavorite">☆</span>
+            }
         </section>
-        <img [src]="currentRecipeChild().imgUrl" class="recipe-img">
+        <p class="recipe-description">{{recipe()?.description}}</p>
     </section>
 
     <section class="servings-wrapper">
@@ -22,16 +19,57 @@
         </section>
     </section>
 
-    <section class="recipe-ingredients-wrapper">
-        <h3>Ingredients:</h3>
-        <ul>
-            @for (ingredient of computedIngredients(); track ingredient.name) {
-            <li>
-                {{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}
-            </li>
-            } @empty {
-            <p>No ingredients listed :(</p>
-            }
-        </ul>
+    <section class="recipe-low-details-wrapper">
+        <section class="recipe-ingredients-wrapper">
+            <h3>Ingredients:</h3>
+            <ul>
+                @for (ingredient of computedIngredients(); track ingredient.name) {
+                <li>
+                    {{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}
+                </li>
+                } @empty {
+                <p>No ingredients listed :(</p>
+                }
+            </ul>
+        </section>
+        <img [src]="recipe()?.imgUrl" class="recipe-img">
     </section>
 </section>
+
+<!-- <section class="recipe-detail-wrapper">
+    <section class="recipe-description-wrapper">
+        <section class="recipe-heading-wrapper">
+            <h2 class="recipe-heading">{{currentRecipeChild().name}}</h2>
+            @if (currentRecipeChild().isFavorite) {
+            <span class="isFavorite">★</span>
+            } @else {
+            <span class="isFavorite">☆</span>
+            }
+        </section>
+        <p class="recipe-description">{{currentRecipeChild().description}}</p>
+    </section>
+
+    <section class="servings-wrapper">
+        <span class="servings-counter">Servings: {{servingsCount()}}</span>
+        <section class="servings-buttons-wrapper">
+            <button class="servings-btn" (click)="incrementServingsCount()">+</button>
+            <button class="servings-btn" (click)="decrementServingCount()">-</button>
+        </section>
+    </section>
+
+    <section class="recipe-low-details-wrapper">
+        <section class="recipe-ingredients-wrapper">
+            <h3>Ingredients:</h3>
+            <ul>
+                @for (ingredient of computedIngredients(); track ingredient.name) {
+                <li>
+                    {{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}
+                </li>
+                } @empty {
+                <p>No ingredients listed :(</p>
+                }
+            </ul>
+        </section>
+        <img [src]="currentRecipeChild().imgUrl" class="recipe-img">
+    </section>
+</section> -->

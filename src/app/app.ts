@@ -6,7 +6,7 @@ import { RecipeList } from "./recipe-list/recipe-list";
     selector: 'app-root',
     imports: [RouterOutlet, RecipeList],
     templateUrl: './app.html',
-    styleUrl: './app.css'
+    styleUrls: ['./app.css']
 })
 export class App {
     
